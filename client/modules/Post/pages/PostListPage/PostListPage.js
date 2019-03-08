@@ -7,7 +7,7 @@ import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
 
 // Import Actions
-import { addPostRequest, fetchPosts, deletePostRequest } from '../../PostActions';
+import { addPostRequest, fetchPosts, deletePostRequest, thumbUpRequest, thumbDownRequest } from '../../PostActions';
 import { toggleAddPost } from '../../../App/AppActions';
 
 // Import Selectors
@@ -30,15 +30,24 @@ class PostListPage extends Component {
     this.props.dispatch(addPostRequest({ name, title, content }));
   };
 
+  handleThumbUp = (cuid, votes) => {
+    this.props.dispatch(thumbUpRequest(cuid, votes));
+  };
+
+  handleThumbDown = (cuid, votes) => {
+    this.props.dispatch(thumbDownRequest(cuid, votes));
+  };
+
   render() {
     return (
       <div>
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
-        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
+        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} handleThumbUp={this.handleThumbUp} handleThumbDown={this.handleThumbDown} />
       </div>
     );
   }
 }
+
 
 // Actions required to provide data for this component to render in sever side.
 PostListPage.need = [() => { return fetchPosts(); }];
@@ -56,6 +65,7 @@ PostListPage.propTypes = {
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired,
   })).isRequired,
   showAddPost: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,

@@ -111,12 +111,12 @@ export function thumbDown(cuid, votes) {
 
 
 export function thumbDownRequest(cuid, votes) {
-  const newVotes = voteCount - 1;
+  const newVotes = votes - 1;
   return (dispatch) => {
     return callApi(`posts/${cuid}`, 'put', {
       post: {
         votes: newVotes,
       },
-    }).then(() => dispatch(voteDown(cuid, newVotes)));
+    }).then(() => dispatch(thumbDown(cuid, newVotes)));
   };
 }
