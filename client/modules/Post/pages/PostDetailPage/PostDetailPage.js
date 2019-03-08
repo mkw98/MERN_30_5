@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { injectIntl, FormattedMessage } from 'react-intl';
-//injectIntl(funkcja, która "wstrzykuje"do komponentu tłumaczeniedlawiadomości(???))
+//injectIntl(funkcja, która "wstrzykuje"do komponentu tłumaczenie dla wiadomości(???))
 
 // Import Style
 import styles from '../../components/PostListItem/PostListItem.css';
