@@ -16,11 +16,27 @@ function PostListItem(props) {
       </h3>
       <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>
       <p className={styles['post-desc']}>{props.post.content}</p>
+      <p className={styles['post-votes']}>
+        <a className={styles['post-vote']} href="#" onClick={props.onThumbUp}>thumb up </a>
+        <a className={styles['post-vote']} href="#" onClick={props.onTHumbDown}>thumb down </a>
+        {props.post.votes}
+      </p>
       <p className={styles['post-action']}><a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a></p>
       <hr className={styles.divider} />
     </div>
   );
 }
+
+
+
+
+
+      <p className={styles['post-action']}><a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a></p>
+      <hr className={styles.divider} />
+    </div>
+
+
+
 
 PostListItem.propTypes = {
   post: PropTypes.shape({
