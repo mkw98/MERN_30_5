@@ -1,7 +1,5 @@
 // Import Actions
 import { TOGGLE_ADD_POST, TOGGLE_EDIT_POST } from './AppActions';
-import { fetchPost, editPostRequest } from '../../PostActions';
-import { toggleEditPost } from '../../../App/AppActions';
 
 // Initial State
 const initialState = {
